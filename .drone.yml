@@ -46,7 +46,7 @@ steps:
     - refs/tags/v*
 
 - name: push-dockerhub-readme
-  image: jlesage/drone-push-readme
+  image: danifunker/drone-push-readme
   settings:
     repo: ${DRONE_REPO_NAMESPACE}/${DRONE_REPO_NAME##docker-}
     username:
@@ -58,15 +58,15 @@ steps:
     ref:
     - refs/tags/v*
 
-- name: microbadger
-  image: plugins/webhook
-  settings:
-    urls:
-      from_secret: microbadger_webhook
-  failure: ignore
-  when:
-    ref:
-    - refs/tags/v*
+      #- name: microbadger
+      #image: plugins/webhook
+      #settings:
+      #urls:
+      #from_secret: microbadger_webhook
+      #failure: ignore
+      #when:
+      #ref:
+      #- refs/tags/v*
 
       #- name: notification
       #  image: plugins/pushover
